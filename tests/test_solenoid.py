@@ -5,28 +5,26 @@ from door_trigger.solenoid import Solenoid
 from unittest.mock import MagicMock
 
 def test_solenoid_init():
-    crickit.drive_1.return_value = MagicMock()
-    # board.D13.return_value = 101
-    # mock = MagicMock()
+    crickit.feather_drive_1.return_value = MagicMock()
 
-    solenoid = Solenoid(crickit.drive_1)
+    solenoid = Solenoid(1)
 
-    assert solenoid.drive == crickit.drive_1
+    assert solenoid.drive == crickit.feather_drive_1
     assert not solenoid.is_open()
     assert solenoid.open_duration == 30
 
-    solenoid = Solenoid(crickit.drive_1, open_duration=60)
+    solenoid = Solenoid(1, open_duration=60)
 
     assert solenoid.open_duration == 60
 
 
 
 def test_open_close():
-    crickit.drive_1.return_value = MagicMock()
+    crickit.feather_drive_1.return_value = MagicMock()
 
     time.time = MagicMock(side_effect = [1,2,31,31])
 
-    solenoid = Solenoid(crickit.drive_1)
+    solenoid = Solenoid(1)
 
     solenoid.open()
     assert solenoid.is_open()

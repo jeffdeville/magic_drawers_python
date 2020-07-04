@@ -1,12 +1,19 @@
 import time
+from adafruit_crickit import crickit
 
 OPEN_FRACTION = 0.67
 HOLD_OPEN_DELAY = 0.1
 HOLD_OPEN_FRACTION = 0.5
-
+DRIVE = {
+    1: crickit.feather_drive_1,
+    2: crickit.feather_drive_2,
+    3: crickit.feather_drive_3,
+    4: crickit.feather_drive_4,
+}
 class Solenoid:
 
     def __init__(self, drive, open_duration=30):
+        drive = DRIVE[drive]
         drive.frequency = 1000
         drive.fraction = 0.0
         self.drive = drive

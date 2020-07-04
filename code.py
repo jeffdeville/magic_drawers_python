@@ -1,9 +1,8 @@
 from time import sleep
-from adafruit_crickit import crickit
 from door_trigger.solenoid import Solenoid
 
 def run():
-    solenoid = Solenoid(crickit.feather_drive_1)
+    solenoid = Solenoid(1)
     print("running")
 
     while True:
