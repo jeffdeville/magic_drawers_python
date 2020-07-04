@@ -10,8 +10,8 @@ class IRRemote:
     self.decoder = adafruit_irremote.GenericDecode()
     self.ir_code = ir_code
 
-  def check_code(self):
-    # print("IRRemote.check_code")
+  def check(self):
+    # print("IRRemote.check")
     pulses = self.decoder.read_pulses(self.pulsein, blocking=False)
     if pulses is not None:
         try:

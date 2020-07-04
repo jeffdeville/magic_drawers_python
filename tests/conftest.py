@@ -22,8 +22,15 @@ MOCK_MODULES = [
     "time",
     "adafruit_irremote",
     "pulseio",
-    # "adafruit_ble.BLERadio",
-    # "adafruit_ble.advertising.adafruit.AdafruitRadio",
+    "adafruit_ble",
+    "adafruit_ble.services",
+    "adafruit_ble.services.standard.device_info",
+    "adafruit_ble.advertising.standard",
+    "_bleio",
+    "adafruit_ble.uuid",
+    "adafruit_ble.characteristics",
+    "adafruit_ble.characteristics.int",
+
 ]
 
 

@@ -12,7 +12,7 @@ def test_irremote_init():
     assert remote.lock == lock
     assert remote.decoder is not None
 
-def test_irremote_check_code():
+def test_irremote_check():
     lock = MagicMock()
     decoder = MagicMock()
     decoder.decode_bits.return_value = [1,2, 3, 4]
@@ -20,5 +20,5 @@ def test_irremote_check_code():
 
     remote = IRRemote(lock=lock, pin=board.A0, ir_code=[1, 2, 3, 4])
 
-    remote.check_code()
+    remote.check()
     lock.open.assert_called()
