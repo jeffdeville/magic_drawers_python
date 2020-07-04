@@ -1,15 +1,17 @@
 from time import sleep
 from door_trigger.solenoid import Solenoid
+from wand.irremote import IRRemote
+import board
+
 
 def run():
-    solenoid = Solenoid(1)
+    lock1 = Solenoid(1)
+    irremote = IRRemote(lock=lock1, signal=board.A0)
     print("running")
 
     while True:
-        if solenoid.is_open():
-            solenoid.close_if()
-        else:
-            solenoid.open()
+        lock1.close_if()
+        irremote.check_code()
         sleep(2)
 
 if __name__ == '__main__':
