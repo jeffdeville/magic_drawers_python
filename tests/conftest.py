@@ -19,7 +19,9 @@ MOCK_MODULES = [
     "digitalio",
     "board",
     "adafruit_crickit",
-    "time"
+    "time",
+    "adafruit_irremote",
+    "pulseio",
     # "adafruit_ble.BLERadio",
     # "adafruit_ble.advertising.adafruit.AdafruitRadio",
 ]

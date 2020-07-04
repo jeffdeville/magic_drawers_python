@@ -4,9 +4,9 @@ import board
 
 
 class IRRemote:
-  def __init__(self, lock, signal=board.A0, ir_code=[223, 32, 239, 16]):
+  def __init__(self, lock, pin=board.A0, ir_code=[223, 32, 239, 16]):
     self.lock = lock
-    self.pulsein = pulseio.PulseIn(signal, maxlen=120, idle_state=True)
+    self.pulsein = pulseio.PulseIn(pin, maxlen=120, idle_state=True)
     self.decoder = adafruit_irremote.GenericDecode()
     self.ir_code = ir_code
 
@@ -16,6 +16,7 @@ class IRRemote:
     if pulses is not None:
         try:
             # Attempt to convert received pulses into numbers
+            # print(self.decoder)
             received_code = self.decoder.decode_bits(pulses)
             print("NEC Infrared code received - yay - neato: ", received_code)
             if received_code == self.ir_code:
