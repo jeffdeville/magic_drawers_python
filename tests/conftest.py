@@ -18,6 +18,7 @@ from unittest.mock import MagicMock
 MOCK_MODULES = [
     "digitalio",
     "board",
+    "adafruit_crickit",
     "time"
     # "adafruit_ble.BLERadio",
     # "adafruit_ble.advertising.adafruit.AdafruitRadio",

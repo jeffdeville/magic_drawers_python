@@ -1,10 +1,11 @@
 from time import sleep
-from board import D13
+from adafruit_crickit import crickit
 from door_trigger.solenoid import Solenoid
 
 def run():
-    solenoid = Solenoid(D13)
-    solenoid.open()
+    solenoid = Solenoid(crickit.feather_drive_1)
+    print("running")
+
     while True:
         if solenoid.is_open():
             solenoid.close_if()
@@ -12,9 +13,5 @@ def run():
             solenoid.open()
         sleep(2)
 
-print("========================")
-print("What does this say on the actual board?")
-print(__name__)
-print("========================")
 if __name__ == '__main__':
     run()
