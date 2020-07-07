@@ -4,6 +4,15 @@ from wand.irremote import IRRemote
 from potions.scale_reader import ScaleReader
 import board
 
+import sys
+if sys.implementation.name == "cpython":
+    import logging
+if sys.implementation.name == "circuitpython":
+    import adafruit_logging as logging
+
+logger = logging.getLogger("Main")
+logger.setLevel(logging.INFO)
+
 
 def run():
     lock1 = Solenoid(1)
@@ -12,7 +21,7 @@ def run():
     lock2 = Solenoid(2)
     scale_reader = ScaleReader(lock=lock2, target_value=36430, fudge_factor=10.0)
 
-    print("running")
+    logger.info("running")
 
     while True:
         lock1.close_if()

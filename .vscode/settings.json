@@ -2,7 +2,7 @@
   "python.autoComplete.extraPaths": [
     "/Users/jeff/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.2/boards/0x239A/0x802A",
     "/Users/jeff/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.2/stubs",
-    "/Users/jeff/Library/Application Support/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20200704/adafruit-circuitpython-bundle-py-20200704/lib"
+    "/Users/jeff/Library/Application Support/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20200704/adafruit-circuitpython-bundle-py-20200707/lib"
   ],
   "python.formatting.provider": "black",
   "circuitpython.board.vid": "0x239A",

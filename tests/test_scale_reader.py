@@ -1,6 +1,6 @@
 import pytest
 from potions.scale_reader import ScaleReader
-from potions.weight_scale_service import WeightScaleService
+from potions.weight_scale_service import WeightScaleService, WeightScaleMeasurementValues
 from unittest.mock import MagicMock, patch
 
 def test_scale_reader_init():
@@ -47,17 +47,16 @@ def test_scale_reader_get_measurement_when_not_connected():
     scale_reader.ws_connection = mock_connection
     assert scale_reader._get_measurement() is None
 
-    print("====================")
-    # mock_service = MagicMock(measurement_values=14.1)
-    mock_service = MagicMock(measurement_values=14.1)
-    mock_connection = MagicMock(connected=True) #, __getitem__=mock_service)
-    with patch.dict(mock_connection, {WeightScaleService: mock_service}):
-        # mock_connection.__getitem__.side_effect =
-        # import pdb; pdb.set_trace()
-        scale_reader.ws_connection = mock_connection
-        assert scale_reader._get_measurement() is None
-        assert scale_reader.initial_value == 14.1
 
+def test_scale_reader_get_measurement_when_connected():
+    scale_reader = ScaleReader(lock=MagicMock(), target_value=123.0)
+    mock_connection = MagicMock(connected=True) #, __getitem__=mock_service)
+
+    mock_service = mock_connection.__getitem__.return_value
+    mock_service.measurement_values = WeightScaleMeasurementValues(weight=14.1)
+    scale_reader.ws_connection = mock_connection
+    assert scale_reader._get_measurement() is None
+    assert scale_reader.initial_value == 14.1
 
 
 def test_scale_reader_scan():

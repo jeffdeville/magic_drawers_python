@@ -48,6 +48,14 @@ from adafruit_ble.services import Service
 from adafruit_ble.uuid import StandardUUID
 from adafruit_ble.characteristics import Characteristic, ComplexCharacteristic
 from adafruit_ble.characteristics.int import Uint8Characteristic
+import sys
+if sys.implementation.name == "cpython":
+    import logging
+if sys.implementation.name == "circuitpython":
+    import adafruit_logging as logging
+
+logger = logging.getLogger("Weight Scale Svc")
+logger.setLevel(logging.INFO)
 
 __version__ = "0.0.0-auto.0"
 # __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_BLE_Heart_Rate.git"
@@ -116,8 +124,8 @@ class WeightScaleService(Service):
 
         Return ``None`` if no packet has been read yet.
         """
-        # print("Packet Size:")
-        # print(self.weight_scale_measurement.packet_size)
+        # logger.info("Packet Size:")
+        # logger.info(self.weight_scale_measurement.packet_size)
         if self._measurement_buf is None:
             self._measurement_buf = bytearray(
                 self.weight_scale_measurement.packet_size  # pylint: disable=no-member
@@ -128,7 +136,7 @@ class WeightScaleService(Service):
         )
 
         if packet_length == 0:
-            # print("Packet Length == 0")
+            # logger.info("Packet Length == 0")
             return None
         # The flags are the 'features', which tell you where we want to go.
         next_byte = 1
