@@ -7,10 +7,10 @@ import board
 
 def run():
     lock1 = Solenoid(1)
-    irremote = IRRemote(lock=lock1, signal=board.A0)
+    irremote = IRRemote(lock=lock1, pin=board.A0)
 
     lock2 = Solenoid(2)
-    scale_reader = ScaleReader(lock=lock2, target_value=123.0, fudge_factor=10.0)
+    scale_reader = ScaleReader(lock=lock2, target_value=36430, fudge_factor=10.0)
 
     print("running")
 

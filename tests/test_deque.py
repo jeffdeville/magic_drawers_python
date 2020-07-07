@@ -15,3 +15,10 @@ def test_append():
 
     deque.append(3)
     assert sum(deque) == 5
+
+def test_indexing():
+    deque = Deque([], max_size=2)
+    deque.append(1)
+    deque.append(2)
+    assert deque[0] == 1
+    assert deque[1] == 2

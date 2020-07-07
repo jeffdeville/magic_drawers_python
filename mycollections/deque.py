@@ -4,10 +4,16 @@ class Deque:
        self.max_size = max_size
 
     def __iter__(self):
-        return self.content.__iter__()
+        return iter(self.content)
 
     def __len__(self):
         return len(self.content)
+
+    def __getitem__(self, index):
+        if index + 1 > self.__len__():
+            raise IndexError
+
+        return self.content[index]
 
     def append(self, value):
         self.content.append(value)

@@ -116,8 +116,8 @@ class WeightScaleService(Service):
 
         Return ``None`` if no packet has been read yet.
         """
-        print("Packet Size:")
-        print(self.weight_scale_measurement.packet_size)
+        # print("Packet Size:")
+        # print(self.weight_scale_measurement.packet_size)
         if self._measurement_buf is None:
             self._measurement_buf = bytearray(
                 self.weight_scale_measurement.packet_size  # pylint: disable=no-member
@@ -128,7 +128,7 @@ class WeightScaleService(Service):
         )
 
         if packet_length == 0:
-            print("Packet Length == 0")
+            # print("Packet Length == 0")
             return None
         # The flags are the 'features', which tell you where we want to go.
         next_byte = 1
